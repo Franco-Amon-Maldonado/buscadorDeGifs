@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import ListGift from './components/ListGift';
+import {Link, Route} from "wouter.js"; 
+
+
 
 function App() {
+  const [keyword, setkeyword] = useState('perro')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="App">
+    
+      <div className="App-container">
+        <Route component={ListGift} path='/gift:keyword'  />
+        <Link to='/gift/Argentina'>  Gif de Argentina</Link>
+        <Link to='/gift/Panda'>Gif de Pandas</Link>
+        <Link to='/gift/Gimnasio'> Gif de Gimnasio</Link>
+      </div>
+    </section>
   );
 }
 
