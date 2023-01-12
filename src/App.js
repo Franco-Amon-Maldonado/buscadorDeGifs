@@ -1,23 +1,28 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
-import ListGift from './components/ListGift';
-import {Link, Route} from "wouter.js"; 
-
-
+import ShowGif from './components/ShowGif';
+import {BrowserRouter as Router, Link, Routes, Route} from 'react-router-dom';
 
 function App() {
-  const [keyword, setkeyword] = useState('perro')
 
   return (
-    <section className="App">
+
+    <Router>
+      <section className="App">
+        <div className="App-container">
+          <Routes>
+            { /* Se utiliza path completo porque "element"
+                no puede leer valores en rutas anidadas
+                conservando la ruta principal */ }
+            <Route path="gif/:keyword" element={<ShowGif />} />
+          </Routes>
+          <Link to='/gif/Argentina'>Gif de Argentina</Link>
+          <Link to='/gif/Panda'>Gif de Pandas</Link>
+          <Link to='/gif/Gimnasio'> Gif de Gimnasio</Link> 
+        </div>
+      </section>
+    </Router>
     
-      <div className="App-container">
-        <Route component={ListGift} path='/gift:keyword'  />
-        <Link to='/gift/Argentina'>  Gif de Argentina</Link>
-        <Link to='/gift/Panda'>Gif de Pandas</Link>
-        <Link to='/gift/Gimnasio'> Gif de Gimnasio</Link>
-      </div>
-    </section>
   );
 }
 
