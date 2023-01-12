@@ -1,7 +1,7 @@
 import React from "react";
 
 
-export default function Gift({id, title, url}){
+export default function Gif({id, title, url}){
 
     return (
         
